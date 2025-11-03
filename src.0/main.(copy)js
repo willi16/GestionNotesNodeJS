@@ -1,0 +1,30 @@
+//import fs from 'node:fs'
+import {readFile,writeFile,readFileSync} from 'node:fs'
+
+
+
+// const fs = require('node:fs')
+// const {readFile} = require('node:fs')
+
+//Lire et Ecrire dans un fichier avec un module de manière asyncrone
+// const file_path = 'eleves.txt';
+// readFile(file_path,'utf8',(err,data)=>{
+//     if(err) throw err;
+//     console.log(data);
+// })
+
+
+// writeFile(file_path,"Hello how are you doing",{flag:'a',encoding:'utf8'},(err)=>{
+    
+//     console.log("write successful");
+// })
+
+//Lire et Ecrire dans un fichier avec un module de manière syncrone
+const file_path = 'eleves.txt';
+console.log(readFileSync(file_path,'utf8'));
+
+
+writeFile(file_path,"Hello how are you doing",{flag:'a',encoding:'utf8'},(err)=>{
+    
+    console.log("write successful");
+})
