@@ -105,7 +105,8 @@ export default class StudentService {
 
         
         // return this.get(id);
-        const lastID = this.studentRepository.update(student_data);
+        
+        const lastID = this.studentRepository.update(id,student_data);
 
         return this.get(lastID)
 
@@ -114,18 +115,20 @@ export default class StudentService {
 
 
     async delete(id) {
-        const db = await Database.getDatabaseInstance();
+        // const db = await Database.getDatabaseInstance();
 
-        const delete_sql = `
-            DELETE FROM students
-            WHERE id = :id;
-        `;
+        // const delete_sql = `
+        //     DELETE FROM students
+        //     WHERE id = :id;
+        // `;
 
-        await db.connection.run(delete_sql, {
-            ':id': id
-        });
+        // await db.connection.run(delete_sql, {
+        //     ':id': id
+        // });
 
-       
+        const lastID = this.studentRepository.delete(id);
+
+        // return this.get(lastID)
         return { deleted: true, id };
     }
     // update(id,student_data){

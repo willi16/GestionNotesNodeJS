@@ -52,6 +52,7 @@ export default class StudentRepository extends Repository {
         if (student !== undefined){
 
             const db = await Database.getDatabaseInstance();
+            
             const {firstname,lastname,sexe,birthday} = student_data;
             
             const update_sql = `
@@ -74,6 +75,22 @@ export default class StudentRepository extends Repository {
             return result;
 
         }
+    }
+
+
+    async delete(id) {
+        const db = await Database.getDatabaseInstance();
+    
+        const delete_sql = `
+            DELETE FROM students
+            WHERE id = :id;
+        `;
+    
+        await db.connection.run(delete_sql, {
+            ':id': id
+        });
+          
+        return { deleted: true, id };
     }
 
 
